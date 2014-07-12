@@ -1,0 +1,27 @@
+.header {
+    background-color: #f0f0f0;
+    height: 180px;
+    padding: 70px 40px;
+    vertical-align: center;
+}
+.dot {
+    font-size: 16pt;
+    margin-top: -6px;
+}
+.header_text {
+    padding-left: 40px;
+    font-size: 16pt;
+}
+.onav {
+    padding-top: 60px;
+}
+
+.onav-ul {
+    list-style-type: none;
+}
+li {
+    padding: 10px 0px;
+}
+.active {
+    font-weight: bold;
+}
