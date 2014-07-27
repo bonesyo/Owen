@@ -18,6 +18,7 @@
 .header-text {
     font-family: helvetica;
 	letter-spacing: 1px;
+	line-height: 24px;
     padding-left: 5px;
     font-size: 16px;
 	color: rgb(15,15,15);
@@ -28,7 +29,7 @@ a {
 	font-weight: bold;
 }
 a:hover{
-	color: rgb(0,0,255);
+	color: rgb(0,0,250);
 	text-decoration: none;
 	font-weight: bold;
 	-webkit-transition: opacity 0.1s ease-in-out;
@@ -58,6 +59,7 @@ li {
 }
 .footer-text{
     font-family: helvetica;
+	line-height: 24px;
 	letter-spacing: 1px;
     padding-left: 5px;
     font-size: 16px;
