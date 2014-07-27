@@ -1,15 +1,16 @@
 .header {
     background-color: #f0f0f0;
-    height: 180px;
-    padding: 70px 40px;
+    padding: 80px 20px;
     vertical-align: center;
 }
 .dot {
     font-size: 16pt;
     margin-top: -6px;
+    padding-left: 25px;
+
 }
 .header-text {
-    padding-left: 40px;
+    padding-left: 5px;
     font-size: 20px;
 }
 .onav {
