@@ -24,29 +24,31 @@
 		<div class="top"></div>
 
             <!--Copy and paste this to make more content  -->
-            <div class="col-sm-12 content">
+            <div id="sticker" class="col-sm-12 content">
                 <div class="col-sm-1">
 
                 </div>
-                <div class="col-sm-5 blocks">
+                <div class="col-sm-12 blocks">
                     <!-- description -->
-                    <p class="col-sm-12 desc">
-                        IPhone Carles culpa, Etsy Williamsburg meh biodiesel eiusmod id enim pop-up selvage. Labore id elit tattooed, exercitation slow-carb paleo put a bird on it lo-fi. Mustache single-origin coffee Neutra trust fund. Master cleanse veniam aliquip exercitation paleo id Pitchfork. Bushwick bespoke yr fingerstache 8-bit photo booth selfies typewriter, irure eiusmod Etsy salvia XOXO hoodie. Eu Vice cupidatat, kogi photo booth pariatur cornhole Cosby sweater shabby chic quinoa twee mustache. Labore enim eu stumptown, trust fund tote bag Pinterest pork belly.
-                    </p>
-
-                    <img class="col-sm-12 img-responsive images" src="./images/DSC_8569.jpg" alt="image" />
-                    <img class="col-sm-12 img-responsive images" src="./images/DSC_8574.jpg" alt="image" />
-
+                    <div class="col-sm-11 col-sm-offset-1">
+                        <p class="col-sm-5 desc">
+                            IPhone Carles culpa, Etsy Williamsburg meh biodiesel eiusmod id enim pop-up selvage. Labore id elit tattooed, exercitation slow-carb paleo put a bird on it lo-fi. Mustache single-origin coffee Neutra trust fund. Master cleanse veniam aliquip exercitation paleo id Pitchfork. Bushwick bespoke yr fingerstache 8-bit photo booth selfies typewriter, irure eiusmod Etsy salvia XOXO hoodie. Eu Vice cupidatat, kogi photo booth pariatur cornhole Cosby sweater shabby chic quinoa twee mustache. Labore enim eu stumptown, trust fund tote bag Pinterest pork belly.
+                        </p>
+                    </div>
+                    <div class="col-sm-11 col-sm-offset-1">
+                        <img class="col-sm-5 img-responsive images" src="./images/DSC_8569.jpg" alt="image" />
+                        <img class="col-sm-5 col-sm-offset-1 img-responsive images" src="./images/DSC_8574.jpg" alt="image" />
+                    </div>
                 </div>
-
-                <div class="col-sm-5 blocks">
+                <div class="col-sm-10 col-sm-offset-1">
                     <img class="col-sm-12 img-responsive images" src="./images/DSC_8576.jpg" alt="image" />
-                    <img class="col-sm-12 img-responsive images" src="./images/DSC_8585.jpg" alt="image" />
                 </div>
+
+
             </div>
             <!-- end of copy -->
             <!--Copy and paste this to make more content  -->
-            <div class="col-sm-12 content-last">
+            <div id="scroller" class="col-sm-12 content-last">
                 <div class="col-sm-1">
 
                 </div>
@@ -91,4 +93,21 @@
 
         </div>
     </div>
+
+    <script charset="utf-8">
+        $(document).ready(function() {
+            var s = $("#sticker");
+            var r = $("#scroller");
+            var height = s.height();
+            $(window).scroll(function() {
+                var windowpos = $(window).scrollTop();
+                // console.log(windowpos, (pos.top + $(window).height()));
+                if (windowpos >= height - 80) {
+                    s.addClass("stick");
+                    // r.addClass("scroll");
+                }
+            });
+        });
+    </script>
+
 </body>

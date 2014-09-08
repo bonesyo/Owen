@@ -5,8 +5,9 @@
 	z-index: 99;
 }
 .top {
-	background-color: white;
-  vertical-align: center;
+    position: relative;
+    background-color: white;
+    vertical-align: center;
 	min-height: 190px;
 }
 .header-text-dot {
@@ -121,4 +122,14 @@ li {
 }
 #name {
   font-family: NeuzeitSLTStd-BookHeavy, helvetica;
+}
+.stick {
+    position: fixed !important;
+    z-index: 99;
+    top: 0px;
+}
+.scroll {
+    position: absolute;
+    top: 2000px;
+
 }
