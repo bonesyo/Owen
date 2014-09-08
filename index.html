@@ -24,7 +24,7 @@
 		<div class="top"></div>
 
             <!--Copy and paste this to make more content  -->
-            <div id="sticker" class="col-sm-12 content">
+            <div class="card col-sm-12 content">
                 <div class="col-sm-1">
 
                 </div>
@@ -48,7 +48,7 @@
             </div>
             <!-- end of copy -->
             <!--Copy and paste this to make more content  -->
-            <div id="scroller" class="col-sm-12 content-last">
+            <div class="card col-sm-12 content-last">
                 <div class="col-sm-1">
 
                 </div>
@@ -96,17 +96,100 @@
 
     <script charset="utf-8">
         $(document).ready(function() {
-            var s = $("#sticker");
-            var r = $("#scroller");
-            var height = s.height();
-            $(window).scroll(function() {
-                var windowpos = $(window).scrollTop();
-                // console.log(windowpos, (pos.top + $(window).height()));
-                if (windowpos >= height - 80) {
-                    s.addClass("stick");
-                    // r.addClass("scroll");
-                }
+
+            var pageHeight = window.innerHeight;
+
+            var bgs = [
+                'lime',
+                'magenta'
+            ];
+
+            // grab info for each card (before page has been transformed)
+            var cards = [];
+            $('.card').each(function(index) {
+
+                cards.push({ elm: this, box: this.getBoundingClientRect(), stuck: false });
+
             });
+
+            // now mess up the page flow with absolute positioning
+            cards.forEach(function(card, index) {
+
+                $(card.elm).css({
+                    position: 'absolute',
+                    'background-color': bgs[index],
+                    top: card.box.top
+                });
+
+            });
+
+            var handleScrollDown = function() {
+
+                // stick cards when they reach a certain point
+                cards.filter(function(elm) {
+
+                    return !elm.stuck;
+
+                }).forEach(function(card, index) {
+
+                    var box = card.elm.getBoundingClientRect();
+
+                    if (box.bottom <= (pageHeight / 2)) {
+                        card.stuck = true;
+                        $(card.elm).css({
+                            position: 'fixed',
+                            top: box.top
+                        });
+
+                    }
+
+
+                });
+
+            };
+
+            var handleScrollUp = function() {
+
+                // unstick the cards?
+                // cards.filter(function(elm) {
+                //     return elm.stuck;
+                // }).forEach(function(card, index) {
+                //
+                //     var box = card.elm.getBoundingClientRect();
+                //
+                //     if (box.bottom <= (pageHeight / 2)) {
+                //         card.stuck = false;
+                //         $(card.elm).css({
+                //             position: 'absolute',
+                //             top: box.top
+                //         });
+                //
+                //     }
+                //
+                //
+                // });
+            };
+
+
+            // listen for scroll events and figure out the direction they are scrolling
+            // note: gets a little weird on macs
+            var scrollingUp = false,
+                lastScroll = null;
+            $(window).on('scroll', function() {
+
+                var scrollPos = window.scrollY;
+                if (lastScroll) {
+                    if (lastScroll > scrollPos) {
+                        handleScrollUp();
+                    } else {
+                        handleScrollDown();
+                    }
+                }
+                lastScroll = scrollPos;
+
+
+            });
+
         });
     </script>
 

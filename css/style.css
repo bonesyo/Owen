@@ -124,7 +124,6 @@ li {
 .stick {
     position: fixed !important;
     z-index: 99;
-    top: 0px;
 }
 .scroll {
     position: absolute;
