@@ -5,8 +5,6 @@
 	z-index: 99;
 }
 .top {
-    position: relative;
-    background-color: white;
     vertical-align: center;
 	min-height: 190px;
 }
@@ -131,5 +129,7 @@ li {
 .scroll {
     position: absolute;
     top: 2000px;
-
+}
+#scroller {
+    background-color: blue;
 }
