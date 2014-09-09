@@ -106,9 +106,12 @@
 
             // grab info for each card (before page has been transformed)
             var cards = [];
+            var cardHeight = 0;
             $('.card').each(function(index) {
 
                 cards.push({ elm: this, box: this.getBoundingClientRect(), stuck: false });
+                cardHeight = cards[0].box.height;
+                console.log(cardHeight);
 
             });
 
@@ -149,25 +152,27 @@
             };
 
             var handleScrollUp = function() {
+                console.log("scrolling up", window.scrollY)
 
-                // unstick the cards?
-                // cards.filter(function(elm) {
-                //     return elm.stuck;
-                // }).forEach(function(card, index) {
-                //
-                //     var box = card.elm.getBoundingClientRect();
-                //
-                //     if (box.bottom <= (pageHeight / 2)) {
-                //         card.stuck = false;
-                //         $(card.elm).css({
-                //             position: 'absolute',
-                //             top: box.top
-                //         });
-                //
-                //     }
-                //
-                //
-                // });
+                var newTop =  -cardHeight;
+
+                if(window.scrollY <= cardHeight - 190) {
+                    console.log("shicha")
+                    cards.filter(function(elm) {
+
+                        return elm.stuck;
+
+                    }).forEach(function(card, index) {
+                        console.log(index)
+                        card.stuck = false;
+                        $(card.elm).css({
+                            position: 'relative',
+                            top: 0,
+                            zIndex: 99
+                        });
+                    });
+                }
+
             };
 
 
@@ -178,6 +183,10 @@
             $(window).on('scroll', function() {
 
                 var scrollPos = window.scrollY;
+                var limit = 2 * cards[0].box.height - 650;
+                if(scrollPos >= 2 * cards[0].box.height - 650) {
+                    window.scroll(0, limit);
+                }
                 if (lastScroll) {
                     if (lastScroll > scrollPos) {
                         handleScrollUp();
